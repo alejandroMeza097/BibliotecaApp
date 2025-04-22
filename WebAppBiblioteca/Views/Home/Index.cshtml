@@ -1,0 +1,47 @@
+﻿@model List<Entidades.Libro>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Biblioteca</h2>
+
+<main class="container">
+
+    <div class="container d-flex justify-content-end">
+        <a href="/Home/IrAgregar" class="btn btn-dark">Agregar</a>
+    </div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>TITULO</th>
+                    <th>AUTOR</th>
+                    <th>GENERO</th>
+                    <th>COPIAS</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Entidades.Libro libro in Model)
+                {
+                    <tr>
+                        <th>@libro.idLibro</th>
+                        <td>@libro.titulo</td>
+                        <td>@libro.autor</td>
+                        <td>@libro.genero</td>
+                        <td>@libro.copias</td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+   
+
+   
+</main>
+
+
+

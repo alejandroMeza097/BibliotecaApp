@@ -1,0 +1,6 @@
+C:\Users\alexm\OneDrive\Documentos\Alejandro\IT_DEV\ProyectosPersonales\solAppBiblioteca\Entidades\bin\Debug\Entidades.dll
+C:\Users\alexm\OneDrive\Documentos\Alejandro\IT_DEV\ProyectosPersonales\solAppBiblioteca\Entidades\bin\Debug\Entidades.pdb
+C:\Users\alexm\OneDrive\Documentos\Alejandro\IT_DEV\ProyectosPersonales\solAppBiblioteca\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\alexm\OneDrive\Documentos\Alejandro\IT_DEV\ProyectosPersonales\solAppBiblioteca\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\alexm\OneDrive\Documentos\Alejandro\IT_DEV\ProyectosPersonales\solAppBiblioteca\Entidades\obj\Debug\Entidades.dll
+C:\Users\alexm\OneDrive\Documentos\Alejandro\IT_DEV\ProyectosPersonales\solAppBiblioteca\Entidades\obj\Debug\Entidades.pdb
