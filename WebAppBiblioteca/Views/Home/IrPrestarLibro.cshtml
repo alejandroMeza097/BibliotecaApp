@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Prestamo de libro";
+}
+
+<h2 class="text-center">Prestamo de libro</h2>
+
+
+<a class="btn btn-primary mb-4" href="/Home/Index" role="button">Regresar</a>
+
+<form method="post" action="/Home/PrestarLibro">
+
+    <div class="alert alert-danger" role="alert" style="display:none" id="alert-idLibro">
+    </div>
+    <div class="mb-3">
+        <label for="idLibro" class="form-label">Código del libro : </label>
+        <input type="text" class="form-control" id="idLibro" placeholder="Ingrese el código del libro  a prestar" name="idLibro">
+
+
+    <div class="alert alert-danger" role="alert" style="display:none" id="alert-copiasPrestar">
+    </div>
+    </div>
+    <div class="mb-3">
+        <label for="copiasPrestar" class="form-label">Número de copias a prestar :</label>
+        <input type="text" class="form-control" id="copiasPrestar" name="copiasPrestar">
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" id="btn-prestar">Prestar</button>
+
+</form>
+<script>
+
+    //SE DECLARAN LAS VARIABLES...
+    const idLibro = document.getElementById("idLibro");
+    const copiasPrestar = document.getElementById("copiasPrestar");
+    const btnPrestar = document.getElementById("btn-prestar");
+    const alertIdLibro = document.getElementById("alert-idLibro");
+    const alertCopiasPrestar = document.getElementById("alert-copiasPrestar");
+
+
+    //VALIDACION DE IDLIBRO...
+    idLibro.addEventListener("blur", (event) => {
+        if (validarIdLibro(event.target) == false) {
+            alertIdLibro.innerText = "El campo id NO  puede estar vacio";
+            alertIdLibro.style.display = "block";
+        }
+    });
+
+
+
+    //FUNCIONES DE VALIDACION...
+    function validarIdLibro(element) {
+        if (element.value.trim().length <= 0) {
+            return false;
+        }
+        if (element.value <= 0) {
+            return false;
+        }
+        if (!isNaN(element.value)) {
+            return false;
+        }
+    }
+
+    
+
+    
+
+
+
+
+
+    //SWEET ALERT PARA ERROR EN PRESTAMO...
+    document.addEventListener('DOMContentLoaded', () => {
+         @if (TempData["err"] != null)
+        {
+            <text>
+               Swal.fire({
+                    icon: "error",
+                     title: '@TempData["err"]',
+                     text: "Revisa los campos ingresados",
+                     footer: '<a href="#">Why do I have this issue?</a>'
+        });
+            </text>
+        }
+    });
+
+</script>
+

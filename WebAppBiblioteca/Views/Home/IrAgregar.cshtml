@@ -6,28 +6,166 @@
 <h2 class="text-center">Agregar Nuevo Libro</h2>
 
 <div class="container d-flex justify-content-center">
-    <form action="/Home/Agregar" method="post">
-        <div class="form-group">
+    <form action="/Home/Agregar" method="post" class="w-75" >
+
+        <div class="alert alert-danger" role="alert" style="display:none" id="alert-titulo">
+        </div>
+        <div class="form-group d-flex flex-column align-items-center">
             <label for="titulo">Titulo</label>
-            <input type="text" class="form-control" id="titulo" placeholder="Ingrese el titulo del libro" name="titulo">
+            <input type="text" class="form-control" id="titulo" placeholder="Ingrese el titulo del libro" name="titulo" required>
         </div>
 
-        <div class="form-group">
+
+        <div class="alert alert-danger" role="alert" style="display:none" id="alert-autor">
+        </div>
+        <div class="form-group d-flex flex-column align-items-center">
             <label for="autor">Autor</label>
-            <input type="text" class="form-control" id="autor" placeholder="Ingrese el autor del libro" name="autor">
+            <input type="text" class="form-control" id="autor" placeholder="Ingrese el autor del libro" name="autor" required>
         </div>
 
-        <div class="form-group">
+
+        <div class="alert alert-danger" role="alert" style="display:none" id="alert-genero">
+        </div>
+        <div class="form-group d-flex flex-column align-items-center">
             <label for="genero">Genero</label>
-            <input type="text" class="form-control" id="genero" placeholder="Ingrese el genero del libro" name="genero">
+            <input type="text" class="form-control" id="genero" placeholder="Ingrese el genero del libro" name="genero" required>
         </div>
 
-        <div class="form-group">
+
+        <div class="alert alert-danger" role="alert" style="display:none" id="alert-copias">
+        </div>
+        <div class="form-group d-flex flex-column align-items-center">
             <label for="copias">Número de copias</label>
-            <input type="number" class="form-control" id="copias" name="copias">
+            <input type="number" class="form-control" id="copias" name="copias" required>
         </div>
 
-        <button type="submit" class="btn btn-dark mt-3">Agregar</button>
+        <div class="d-flex flex-column align-items-center">
+            <button type="submit" class="btn btn-dark mt-3" id="btn-agregar">Agregar</button>
+        </div>
+
+        
     </form>
 
 </div>
+
+<script>
+
+
+    //declaracion de variables...
+    const titulo = document.getElementById("titulo");
+    const autor = document.getElementById("autor");
+    const genero = document.getElementById("genero");
+    const copias = document.getElementById("copias");
+    const alertTitulo = document.getElementById("alert-titulo");
+    const alertAutor = document.getElementById("alert-autor");
+    const alertGenero = document.getElementById("alert-genero");
+    const alertCopias = document.getElementById("alert-copias");
+    const btnAgregar = document.getElementById("btn-agregar");
+
+    btnAgregar.disabled = true;
+
+
+
+    //validacion de titulo...
+    titulo.addEventListener('blur', (event) => {
+
+        if (validarCampoVacio(event.target) === false) {
+            alertTitulo.innerText = "El campo titulo NO  puede estar vacio";
+            alertTitulo.style.display = "block";
+        }
+        else {
+            alertTitulo.style.display = "none";
+        }
+        ActivarBoton();
+    });
+
+    //validacion de autor...
+    autor.addEventListener('blur', (event) => {
+
+        if (validarCampoVacio(event.target) === false) {
+            alertAutor.innerText = "El campo autor NO  puede estar vacio";
+            alertAutor.style.display = "block";
+        }
+        else {
+            alertAutor.style.display = "none";
+        }
+        ActivarBoton();
+    });
+
+
+    //validacion de genero...
+    genero.addEventListener('blur', (event) => {
+
+        if (validarCampoVacio(event.target) === false) {
+            alertGenero.innerText = "El campo genero NO  puede estar vacio";
+            alertGenero.style.display = "block";
+        }
+        else {
+            alertGenero.style.display = "none";
+        }
+        ActivarBoton();
+    });
+
+
+    //validacion de numero de copias...
+    copias.addEventListener('blur', (event) => {
+
+        if (validarNumeroCopias(event.target) === false) {
+            alertCopias.innerText = "Número de copias no válido";
+            alertCopias.style.display = "block";
+        }
+        else {
+            alertCopias.style.display = "none";
+        }
+        ActivarBoton();
+    });
+
+
+
+    //funciones de validacion...
+    function validarCampoVacio(element) {
+        if (element.value.trim().length <= 0) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    function validarNumeroCopias(element) {
+        if (element.value < 0) {
+            return false
+        }
+        else {
+            return true;
+        }
+    }
+
+    function ActivarBoton() {
+        if (alertTitulo.style.display === "none" && alertAutor.style.display === "none" && alertGenero.style.display === "none" && alertCopias.style.display === "none" && copias.value > 0 ) {
+            btnAgregar.disabled = false;
+        }
+        else {
+            btnAgregar.disabled = true;
+        }
+    }
+
+    //alerta en caso de que NO se  agregue una persona con exito...
+
+    document.addEventListener('DOMContentLoaded', () => {
+         @if (TempData["err"] != null)
+        {
+            <text>
+               Swal.fire({
+                    icon: "error",
+                     title: '@TempData["err"]',
+                     text: "Revisa los campos ingresados",
+                     footer: '<a href="#">Why do I have this issue?</a>'
+        });
+            </text>
+        }
+    });
+
+
+
+</script>

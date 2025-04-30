@@ -176,6 +176,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\IrAgregar.cshtml" />
+    <Content Include="Views\Home\IrEditar.cshtml" />
+    <Content Include="Views\Home\IrPrestarLibro.cshtml" />
+    <Content Include="Views\Home\IrDevolucionLibro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

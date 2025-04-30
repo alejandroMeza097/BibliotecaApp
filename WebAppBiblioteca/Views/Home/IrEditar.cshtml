@@ -1,0 +1,37 @@
+﻿@model Entidades.Libro
+@{
+    ViewBag.Title = "IrEditar";
+}
+
+<h2 class="text-center">Editar Libro</h2>
+<div class="container d-flex justify-content-center">
+
+    <form action="/Home/EditarLibro" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" id="idLibro" placeholder="Ingrese el titulo del libro" name="idLibro" value="@Model.idLibro" hidden>
+        </div>
+        <div class="form-group">
+            <label for="titulo">Titulo</label>
+            <input type="text" class="form-control" id="titulo" placeholder="Ingrese el titulo del libro" name="titulo" value="@Model.titulo">
+        </div>
+
+        <div class="form-group">
+            <label for="autor">Autor</label>
+            <input type="text" class="form-control" id="autor" placeholder="Ingrese el autor del libro" name="autor" value="@Model.autor">
+        </div>
+
+        <div class="form-group">
+            <label for="genero">Genero</label>
+            <input type="text" class="form-control" id="genero" placeholder="Ingrese el genero del libro" name="genero" value="@Model.genero">
+        </div>
+
+        <div class="form-group">
+            <label for="copias">Número de copias</label>
+            <input type="number" class="form-control" id="copias" name="copias" value="@Model.copias">
+        </div>
+
+        <button type="submit" class="btn btn-dark mt-3">Editar</button>
+    </form>
+
+</div>
+

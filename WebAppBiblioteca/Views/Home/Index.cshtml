@@ -7,10 +7,15 @@
 
 <main class="container">
 
-    <div class="container d-flex justify-content-end">
+
+    <div class="container d-flex justify-content-around mt-4 mb-4">
+        <a href="/Home/IrPrestarLibro" class="btn btn-success">Prestamo</a>
+        <a href="/Home/IrDevolucionLibro" class="btn btn-primary">Devolución</a>
         <a href="/Home/IrAgregar" class="btn btn-dark">Agregar</a>
     </div>
-    <div class="container">
+
+
+    <table class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -19,6 +24,8 @@
                     <th>AUTOR</th>
                     <th>GENERO</th>
                     <th>COPIAS</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -31,17 +38,39 @@
                         <td>@libro.autor</td>
                         <td>@libro.genero</td>
                         <td>@libro.copias</td>
+                        <td><a href="/Home/IrEditar/@libro.idLibro" class="btn btn-warning">Editar</a></td>
+                        <td><a href="/Home/EliminarLibro/@libro.idLibro" class="btn btn-danger">Eliminar</a></td>
                     </tr>
 
                 }
 
             </tbody>
         </table>
-    </div>
-   
 
-   
+    </table>
+
+       
+
+
+
+
 </main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        @if (TempData["msg"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: '@TempData["msg"]',
+                    confirmButtonText: 'OK'
+                });
+            </text>
+        }
+    });
+</script>
 
 
 

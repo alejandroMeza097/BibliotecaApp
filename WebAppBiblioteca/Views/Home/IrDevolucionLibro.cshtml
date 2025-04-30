@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Devolucion Libro";
+}
+
+<h2 class="text-center"> Devolucion de Libro</h2>
+
+<a class="btn btn-primary" href="/Home/Index" role="button">Regresar</a>
+<form method="post" action="/Home/DevolverLibro">
+
+    
+    <div class="mb-3">
+        <label for="idLibro" class="form-label">Código del libro : </label>
+        <input type="text" class="form-control" id="idLibro" placeholder="Ingrese el código del libro  a devolver">
+
+    </div>
+    <div class="mb-3">
+        <label for="copias" class="form-label">Número de copias a devolver :</label>
+        <input type="text" class="form-control" id="copias">
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Devolver</button>
+
+</form>
