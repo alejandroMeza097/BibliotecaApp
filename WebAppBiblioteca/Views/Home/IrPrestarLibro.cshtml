@@ -10,14 +10,14 @@
 
 <form method="post" action="/Home/PrestarLibro">
 
-    <div class="alert alert-danger" role="alert" style="display:none" id="alert-idLibro">
+    <div class="alert alert-danger mb-4 mt-4" role="alert" style="display:none" id="alert-idLibro">
     </div>
     <div class="mb-3">
         <label for="idLibro" class="form-label">Código del libro : </label>
         <input type="text" class="form-control" id="idLibro" placeholder="Ingrese el código del libro  a prestar" name="idLibro">
 
 
-    <div class="alert alert-danger" role="alert" style="display:none" id="alert-copiasPrestar">
+    <div class="alert alert-danger mb-4 mt-4" role="alert" style="display:none" id="alert-copiasPrestar">
     </div>
     </div>
     <div class="mb-3">
@@ -40,13 +40,36 @@
     const alertCopiasPrestar = document.getElementById("alert-copiasPrestar");
 
 
+    //SE CANCELA EL BOTON HASTA QUE SE VALIDEN LOS CAMPOS...
+    btnPrestar.disabled = true;
+
+
     //VALIDACION DE IDLIBRO...
     idLibro.addEventListener("blur", (event) => {
         if (validarIdLibro(event.target) == false) {
-            alertIdLibro.innerText = "El campo id NO  puede estar vacio";
+            alertIdLibro.innerText = "Error en campo id";
             alertIdLibro.style.display = "block";
         }
+        else {
+            alertIdLibro.style.display = "none";
+        }
+        ActivarBoton()
     });
+
+
+    //VALIDACION DE COPIAS PRESTAR...
+    copiasPrestar.addEventListener("blur", (event) => {
+        if (validarCopiasPrestar(event.target) == false) {
+            alertCopiasPrestar.innerText = "Error en campo copias";
+            alertCopiasPrestar.style.display = "block";
+        }
+        else {
+            alertCopiasPrestar.style.display = "none";
+        }
+        ActivarBoton()
+    });
+
+   
 
 
 
@@ -58,11 +81,34 @@
         if (element.value <= 0) {
             return false;
         }
-        if (!isNaN(element.value)) {
+        if (isNaN(element.value)) {
             return false;
         }
     }
 
+    function validarCopiasPrestar(element) {
+        if (element.value.trim().length <= 0) {
+            return false;
+        }
+        if (element.value < 1) {
+            return false;
+        }
+        if (isNaN(element.value)) {
+            return false;
+        }
+    }
+
+
+    function ActivarBoton() {
+        if (alertIdLibro.style.display === "none" && alertCopiasPrestar.style.display === "none") {
+            
+            btnPrestar.disabled = false;
+        }
+        else {
+            btnPrestar.disabled = true;
+            
+        }
+    }
     
 
     
